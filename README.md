@@ -5,7 +5,9 @@ Goal: Extend the RSA functionality in NetX Crypto library. RSA is a widely used 
 importkey.c
 
 init, import, and manage key from PSA interface
+
 psa_crypto_init()
+
 psa_import_key()
 - Loads RSA private key securely
 - Returns key handle (key_id)
@@ -14,6 +16,7 @@ signing.c
 
 give the encoded message a signature using RSA private key
 hash is the digest after using the SHA256 function
+
 psa_sign_hash()
 - Uses RSA private key
 - Performs: s = m^d mod n
@@ -28,7 +31,8 @@ This will be our baseline.
 - function to generate M’ by adding the padding in front of mHash, and appending a “salt”. 
 - After message M’ is ready, run the hash again to generate H. In addition, generate DB, which involves XORing with MGF (mask generation function) to produce maskedDB. 
 - Finally put maskedDB, H, and bc bits together to form encoded message.
-- prepare_em()
+
+prepare_em()
 1. Generate salt
 2. M′ = 0x00×8 || mHash || salt
 3. H = Hash(M′)
