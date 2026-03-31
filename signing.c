@@ -1,4 +1,4 @@
-/*
+
 #include "psa/crypto.h"
 void sign_a_message_using_rsa(const uint8_t* key, size_t key_len)
 {
@@ -54,4 +54,4 @@ void sign_a_message_using_rsa(const uint8_t* key, size_t key_len)
     psa_destroy_key(key_id);
 
     mbedtls_psa_crypto_free();
-}*/
+}
