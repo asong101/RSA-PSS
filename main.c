@@ -24,7 +24,11 @@ static uint64_t OS2IP(const unsigned char* encodedMessage) {
 */
 char message[] = "abcdefghijklmnopqrstuvwxyz";
 char encoded_message[512];
-
+/*
+initialize SHA context
+hash the message bytes
+write 32-byte digest into digest
+*/
 static unsigned char* hash(char* message, int message_size, UCHAR *digest, int digest_size) {
     NX_CRYPTO_SHA256 my_sha256;
     //UINT algorithm;
@@ -56,7 +60,7 @@ static unsigned char* hash(char* message, int message_size, UCHAR *digest, int d
     return digest;
 }
 /*
--Hash function type.  For now you can use the symbol SHA256 (which is defined as ì1î).
+-Hash function type.  For now you can use the symbol SHA256 (which is defined as ‚Äú1‚Äù).
 -Message:  this is the message to be hashed.
 -message_size:  Number of bytes in the message.
 -encoded_message: Buffer space for storing the EM.
@@ -86,13 +90,13 @@ static void prepare_em(int type, char* message, int message_size,
         salt[i] = (unsigned char)(rand() % 256);
     }
     
-/* In C, you can allocate new memory space by calling ìmallocî (remember after the buffer is used,
-you must call ìfreeî to release these buffers.
+/* In C, you can allocate new memory space by calling ‚Äúmalloc‚Äù (remember after the buffer is used,
+you must call ‚Äúfree‚Äù to release these buffers.
 
-Once you fill in these 3 buffers, Mí is simply moving all 3 parts into one memory buffer:
-unsigned char buffer_m_prime[/* Find the length of Mí *./
+Once you fill in these 3 buffers, M‚Äô is simply moving all 3 parts into one memory buffer:
+unsigned char buffer_m_prime[/* Find the length of M‚Äô *./
 
-In the final step, you can use memcpy to move padding1, mHash, and salt into the Mí buffer.
+In the final step, you can use memcpy to move padding1, mHash, and salt into the M‚Äô buffer.
 During this step, the memory view may help you to visualize the buffer layout follows the RFC.*/
 
 /* M' is an octet string of length 8 + hLen + sLen with eightinitial zero octets. */
