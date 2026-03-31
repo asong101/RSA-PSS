@@ -1,4 +1,4 @@
-/*#include "psa/crypto.h"
+#include "psa/crypto.h"
 
 int main() {
     printf("Mbed TLS version: %s\n", MBEDTLS_VERSION_STRING);
@@ -50,5 +50,5 @@ void import_a_key(const uint8_t* key, size_t key_len)
     psa_destroy_key(key_id);
 
     mbedtls_psa_crypto_free();
-}*/
+}
 
